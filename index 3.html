@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rising Minds Therapeutic Services — Boca Raton</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Karla:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root {
+  --fg: #1e1e1e;
+  --fg-2: #3b3b3b;
+  --fg-3: #6b6b6b;
+  --fg-4: #9a9a9a;
+  --bg: #f7f5f1;
+  --bg-2: #f0ede7;
+  --bg-3: #e6e2db;
+  --surface: #fff;
+  --dark: #1e1e1e;
+  --dark-2: #242420;
+  --sage: #6b7f62;
+  --sage-2: #8a9e7f;
+  --sage-light: rgba(107,127,98,.08);
+  --linen: #f2efe9;
+  --border: rgba(0,0,0,.06);
+  --border-d: rgba(255,255,255,.07);
+  --serif: 'Lora', Georgia, serif;
+  --sans: 'Karla', -apple-system, sans-serif;
+  --max: 1080px;
+  --nav-h: 56px;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h)+16px)}
+body{font-family:var(--sans);color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased;font-weight:300;font-size:14px;line-height:1.65}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}button{font-family:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(247,245,241,.93);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:box-shadow .4s var(--ease)}
+.nav.scrolled{box-shadow:0 1px 16px rgba(0,0,0,.04)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:17px;font-weight:500;letter-spacing:.01em}
+.nav-logo span{color:var(--sage)}
+.nav-links{display:flex;gap:22px;list-style:none;align-items:center}
+.nav-links a{font-size:10px;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);transition:color .3s}
+.nav-links a:hover{color:var(--fg)}
+.nav-cta{background:var(--sage)!important;color:#fff!important;padding:8px 16px;border-radius:2px;font-weight:400!important}
+.nav-cta:hover{background:var(--sage-2)!important}
+.mob-btn{display:none;background:none;border:none;cursor:pointer}
+.mob-btn span{display:block;width:16px;height:1px;background:var(--fg);margin:3.5px 0}
+
+/* HERO — split with credential strip */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;gap:0}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:72px 48px 72px 0;margin-left:max(24px,calc((100vw - var(--max))/2))}
+.hero-cred{display:inline-flex;gap:8px;margin-bottom:24px;opacity:0;animation:fu .8s .15s forwards}
+.hero-cred span{font-size:9px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);background:var(--sage-light);padding:4px 10px;border-radius:2px}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:400;line-height:1.2;letter-spacing:-.005em;margin-bottom:20px;opacity:0;animation:fu .8s .3s forwards}
+.hero h1 em{font-style:italic;color:var(--sage)}
+.hero-sub{font-size:14px;color:var(--fg-3);line-height:1.8;max-width:420px;font-weight:200;margin-bottom:32px;opacity:0;animation:fu .8s .45s forwards}
+.hero-acts{display:flex;gap:10px;opacity:0;animation:fu .8s .6s forwards}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;font-size:10px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border:none;cursor:pointer;transition:all .3s var(--ease)}
+.btn-sage{background:var(--sage);color:#fff}
+.btn-sage:hover{background:var(--sage-2)}
+.btn-g{background:none;color:var(--fg);border:1px solid var(--border)}
+.btn-g:hover{border-color:var(--fg)}
+.hero-img{position:relative;overflow:hidden;opacity:0;animation:fadeIn 1s .4s forwards}
+.ph{background:var(--bg-3);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--fg-4);letter-spacing:.12em;text-transform:uppercase;font-weight:200;border:1px dashed var(--fg-4);width:100%;height:100%}
+
+/* CREDENTIAL BAR */
+.cred-bar{background:var(--dark);padding:32px 24px}
+.cred-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.cred-item{text-align:center}
+.cred-v{font-family:var(--serif);font-size:20px;font-weight:400;color:#fff;line-height:1.2}
+.cred-l{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:300;margin-top:3px}
+
+/* SECTIONS */
+.s{padding:88px 24px}
+.s-in{max-width:var(--max);margin:0 auto}
+.s-hd{margin-bottom:44px}
+.s-ey{font-size:8px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.s-t{font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);font-weight:400;line-height:1.3;margin-bottom:10px}
+.s-t em{font-style:italic}
+.s-d{font-size:13px;color:var(--fg-3);max-width:440px;font-weight:200;line-height:1.8}
+.s-alt{background:var(--bg-2)}
+.s-dk{background:var(--dark);color:var(--bg)}
+.s-dk .s-ey{color:var(--sage-2)}
+.s-dk .s-t{color:#fff}
+.s-dk .s-d{color:rgba(255,255,255,.4)}
+
+/* ═══ INTERACTIVE PATHWAY — the custom piece ═══ */
+.pathway{background:var(--linen);border:1px solid var(--border);border-radius:4px;padding:48px 40px;max-width:800px;margin:0 auto}
+.pathway-q{font-family:var(--serif);font-size:22px;font-weight:400;text-align:center;margin-bottom:8px}
+.pathway-sub{font-size:12px;color:var(--fg-3);text-align:center;font-weight:200;margin-bottom:32px}
+.pathway-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pathway-opt{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:24px 20px;cursor:pointer;transition:all .35s var(--ease);position:relative;text-align:left}
+.pathway-opt::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--sage);transform:scaleX(0);transition:transform .3s var(--ease)}
+.pathway-opt:hover{border-color:var(--sage);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.05)}
+.pathway-opt:hover::after{transform:scaleX(1)}
+.pathway-opt.selected{border-color:var(--sage);background:var(--sage-light)}
+.pathway-opt-title{font-family:var(--serif);font-size:16px;font-weight:400;margin-bottom:4px}
+.pathway-opt-desc{font-size:11px;color:var(--fg-3);font-weight:200;line-height:1.6}
+.pathway-result{display:none;margin-top:32px;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:3px}
+.pathway-result.show{display:block;animation:fu .5s forwards}
+.pathway-result h3{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:8px}
+.pathway-result p{font-size:13px;color:var(--fg-3);line-height:1.8;font-weight:200;margin-bottom:16px}
+.pathway-result .btn-sage{margin-top:8px}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.svc{background:var(--surface);padding:32px 28px;transition:background .3s}
+.svc:hover{background:var(--linen)}
+.svc-tag{display:inline-block;font-size:7px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);background:var(--sage-light);padding:3px 8px;border-radius:1px;margin-bottom:12px}
+.svc-name{font-family:var(--serif);font-size:17px;font-weight:400;margin-bottom:6px}
+.svc-desc{font-size:12px;color:var(--fg-3);line-height:1.75;font-weight:200}
+.svc-who{font-size:11px;color:var(--sage);font-weight:400;margin-top:12px;font-style:italic}
+
+/* ABOUT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split-ph{aspect-ratio:3/4;border-radius:3px}
+.split-body p{font-size:13px;color:var(--fg-3);line-height:1.85;margin-bottom:14px;font-weight:200}
+.split-creds{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.split-cred{font-size:9px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);background:var(--sage-light);padding:5px 12px;border-radius:2px}
+
+/* APPROACH (unique to therapy) */
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-d);border-radius:3px;overflow:hidden}
+.approach-card{background:var(--dark-2);padding:32px 24px}
+.approach-icon{font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-2);margin-bottom:14px}
+.approach-title{font-family:var(--serif);font-size:17px;font-weight:400;color:#fff;margin-bottom:8px}
+.approach-text{font-size:12px;color:rgba(255,255,255,.4);line-height:1.75;font-weight:200}
+
+/* FAQ */
+.faq-list{max-width:640px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--serif);font-size:16px;font-weight:400;color:var(--fg)}
+.faq-icon{font-size:13px;color:var(--fg-4);transition:transform .3s var(--ease);flex-shrink:0;margin-left:16px;font-family:var(--sans);font-weight:200}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a-in{padding:0 0 20px;font-size:13px;color:var(--fg-3);line-height:1.8;font-weight:200}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cc{padding:28px 22px;background:var(--surface);border:1px solid var(--border);border-radius:3px}
+.cc h3{font-family:var(--serif);font-size:16px;font-weight:400;margin-bottom:10px}
+.cc p{font-size:12px;color:var(--fg-3);line-height:1.75;font-weight:200}
+.cc a{color:var(--sage);font-weight:400}
+
+/* CTA */
+.cta{text-align:center;padding:88px 24px;background:var(--dark)}
+.cta h2{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);font-weight:400;color:#fff;margin:10px auto 12px;max-width:480px}
+.cta h2 em{font-style:italic;color:var(--sage-2)}
+.cta p{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:32px;font-weight:200}
+
+/* FOOTER */
+.ft{background:var(--dark);border-top:1px solid var(--border-d);padding:44px 24px 24px;color:rgba(255,255,255,.28)}
+.ft-in{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+.ft-brand{font-family:var(--serif);font-size:16px;font-weight:500;color:#fff;margin-bottom:8px}
+.ft-brand span{color:var(--sage-2)}
+.ft-desc{font-size:12px;line-height:1.7;font-weight:200}
+.ft h4{font-size:8px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:12px}
+.ft ul{list-style:none}
+.ft ul a{display:block;font-size:12px;color:rgba(255,255,255,.3);margin-bottom:7px;font-weight:200;transition:color .3s}
+.ft ul a:hover{color:var(--sage-2)}
+.ft-bot{max-width:var(--max);margin:28px auto 0;padding-top:18px;border-top:1px solid var(--border-d);display:flex;justify-content:space-between;font-size:9px}
+.ft-cr{font-family:var(--serif);font-style:italic;color:var(--sage);font-size:11px}
+
+/* STICKY */
+.stick{display:none;position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--dark);padding:10px 16px}
+.stick a{display:block;text-align:center;background:var(--sage);color:#fff;padding:12px;border-radius:2px;font-size:10px;font-weight:400;letter-spacing:.12em;text-transform:uppercase}
+
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.f{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.f.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+@media(max-width:768px){
+  .nav-links{display:none}.mob-btn{display:block}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-copy{padding:56px 24px 40px;margin-left:0}
+  .hero-img{height:320px}
+  .cred-inner{gap:20px}
+  .s{padding:56px 20px}
+  .pathway{padding:32px 20px}
+  .pathway-opts{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr;gap:28px}
+  .approach-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .ft-in{grid-template-columns:1fr}
+  .stick{display:block}body{padding-bottom:54px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-logo">Rising <span>Minds</span></a>
+    <ul class="nav-links">
+      <li><a href="#pathway">Get Started</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Lauren</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="mailto:Scheduling@risingmindstherapy.com?subject=New%20Client%20Inquiry" class="nav-cta">Schedule</a></li>
+    </ul>
+    <button class="mob-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-cred">
+      <span>BCBA</span>
+      <span>LMHC</span>
+      <span>10+ Years</span>
+    </div>
+    <h1>You don't have to navigate this <em>alone.</em></h1>
+    <p class="hero-sub">Individualized therapy for children, teens, and young adults facing anxiety, autism, behavioral challenges, and life transitions. Evidence-based care with real, lasting results.</p>
+    <div class="hero-acts">
+      <a href="#pathway" class="btn btn-sage">Find the Right Support</a>
+      <a href="#services" class="btn btn-g">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="ph">Lauren Photo Here</div>
+  </div>
+</section>
+
+<!-- CREDENTIAL BAR -->
+<div class="cred-bar">
+  <div class="cred-inner">
+    <div class="cred-item"><div class="cred-v">10+ Years</div><div class="cred-l">Clinical Experience</div></div>
+    <div class="cred-item"><div class="cred-v">BCBA</div><div class="cred-l">Board Certified</div></div>
+    <div class="cred-item"><div class="cred-v">LMHC</div><div class="cred-l">Licensed Counselor</div></div>
+    <div class="cred-item"><div class="cred-v">ABA + CBT</div><div class="cred-l">Evidence-Based</div></div>
+    <div class="cred-item"><div class="cred-v">Boca Raton</div><div class="cred-l">In-Home &amp; Online</div></div>
+  </div>
+</div>
+
+<!-- INTERACTIVE PATHWAY -->
+<section class="s" id="pathway">
+  <div class="s-in">
+    <div class="pathway f">
+      <div class="pathway-q">What brings you here today?</div>
+      <p class="pathway-sub">Select the concern that best describes what your child or family is experiencing.</p>
+      <div class="pathway-opts" id="pathwayOpts">
+        <div class="pathway-opt" data-concern="anxiety">
+          <div class="pathway-opt-title">Anxiety or Depression</div>
+          <div class="pathway-opt-desc">Excessive worry, school avoidance, social withdrawal, negative self-talk, changes in sleep or appetite</div>
+        </div>
+        <div class="pathway-opt" data-concern="autism">
+          <div class="pathway-opt-title">Autism Spectrum</div>
+          <div class="pathway-opt-desc">Social communication challenges, repetitive behaviors, difficulty with transitions, sensory concerns</div>
+        </div>
+        <div class="pathway-opt" data-concern="behavior">
+          <div class="pathway-opt-title">Behavior Challenges</div>
+          <div class="pathway-opt-desc">Aggression, defiance, emotional meltdowns, impulsivity, difficulty following rules at home or school</div>
+        </div>
+        <div class="pathway-opt" data-concern="transitions">
+          <div class="pathway-opt-title">Life Transitions</div>
+          <div class="pathway-opt-desc">Starting school, college adjustment, family changes, relationship stress, building independence</div>
+        </div>
+      </div>
+
+      <!-- Results (hidden until selected) -->
+      <div class="pathway-result" id="res-anxiety">
+        <h3>We can help with anxiety and depression.</h3>
+        <p>Using Cognitive Behavioral Therapy (CBT), we teach practical coping strategies that replace negative self-talk and avoidant behaviors. Your child learns to manage their emotions and re-engage with the things that matter — school, friendships, family life. We also provide parent training so you have the tools to support progress at home.</p>
+        <a href="mailto:Scheduling@risingmindstherapy.com?subject=Inquiry%20-%20Anxiety%20%26%20Depression" class="btn btn-sage">Schedule a Consultation</a>
+      </div>
+      <div class="pathway-result" id="res-autism">
+        <h3>Specialized ABA therapy for autism.</h3>
+        <p>Our Board Certified Behavior Analysts (BCBAs) conduct comprehensive developmental evaluations using evidence-based assessments like VB-MAPP and ABLLS-R. We create individualized treatment plans targeting skill deficits across all developmental domains — delivered in-home and at school. Social skills groups are also available for peer interaction practice.</p>
+        <a href="mailto:Scheduling@risingmindstherapy.com?subject=Inquiry%20-%20ABA%20Services" class="btn btn-sage">Schedule an Evaluation</a>
+      </div>
+      <div class="pathway-result" id="res-behavior">
+        <h3>Evidence-based behavior support.</h3>
+        <p>Behavior disorders like ODD, ADHD, and conduct challenges respond well to structured intervention. We use a combination of ABA and behavior therapy techniques to identify what's driving the behavior, teach replacement strategies, and build skills for emotional regulation. Treatment is delivered across home, school, and community settings.</p>
+        <a href="mailto:Scheduling@risingmindstherapy.com?subject=Inquiry%20-%20Behavior%20Support" class="btn btn-sage">Schedule a Consultation</a>
+      </div>
+      <div class="pathway-result" id="res-transitions">
+        <h3>Support through change.</h3>
+        <p>Whether it's a new school, college transition, divorce, or building independence as a young adult — change is hard. Through counseling, we help individuals develop coping skills, find clarity, and move forward with confidence. Online sessions are available from the comfort of home.</p>
+        <a href="mailto:Scheduling@risingmindstherapy.com?subject=Inquiry%20-%20Life%20Transitions" class="btn btn-sage">Schedule a Session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="s s-alt" id="services">
+  <div class="s-in">
+    <div class="s-hd f">
+      <p class="s-ey">Services</p>
+      <h2 class="s-t">Treatment that meets you <em>where you are.</em></h2>
+      <p class="s-d">Evidence-based care for children, teens, and young adults. Delivered in-home, at school, or online.</p>
+    </div>
+    <div class="svc-grid f">
+      <div class="svc">
+        <span class="svc-tag">ABA</span>
+        <div class="svc-name">Applied Behavior Analysis</div>
+        <p class="svc-desc">Comprehensive ABA therapy with individualized treatment plans. In-home and school-based. Evaluations using VB-MAPP, ABLLS-R, AFLS, and PEAK assessments.</p>
+        <div class="svc-who">Children &amp; teens with autism and developmental disabilities</div>
+      </div>
+      <div class="svc">
+        <span class="svc-tag">Counseling</span>
+        <div class="svc-name">Mental Health Therapy</div>
+        <p class="svc-desc">Individual counseling using CBT, exposure therapy, behavioral activation, and mindfulness techniques. Treating anxiety, depression, OCD, PTSD, ADHD, and more.</p>
+        <div class="svc-who">Children, teens, and young adults</div>
+      </div>
+      <div class="svc">
+        <span class="svc-tag">Social Skills</span>
+        <div class="svc-name">Social Skills Groups</div>
+        <p class="svc-desc">Structured small groups for children with similar ages and developmental levels. Conversation skills, friendship building, emotional regulation, turn-taking, and perspective-taking.</p>
+        <div class="svc-who">Children with autism navigating social interactions</div>
+      </div>
+      <div class="svc">
+        <span class="svc-tag">Family</span>
+        <div class="svc-name">Parent Training &amp; Support</div>
+        <p class="svc-desc">Practical strategies for parents to reinforce skills at home. Guidance on managing behaviors, supporting emotional development, and improving family quality of life.</p>
+        <div class="svc-who">Parents and caregivers</div>
+      </div>
+      <div class="svc">
+        <span class="svc-tag">Virtual</span>
+        <div class="svc-name">Online Sessions</div>
+        <p class="svc-desc">Convenient telehealth counseling from the safety of your own home. Same evidence-based approach, flexible scheduling through our online platform.</p>
+        <div class="svc-who">Individuals and families — all stages of life</div>
+      </div>
+      <div class="svc">
+        <span class="svc-tag">Assessment</span>
+        <div class="svc-name">Comprehensive Evaluations</div>
+        <p class="svc-desc">Developmental evaluations conducted in-home or at school by a BCBA. Includes parent interview, evidence-based assessments, and a personalized treatment plan.</p>
+        <div class="svc-who">First step for new ABA clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="s" id="about">
+  <div class="s-in">
+    <div class="split">
+      <div class="ph split-ph f">Lauren Castro Photo Here</div>
+      <div>
+        <div class="s-hd f" style="margin-bottom:16px">
+          <p class="s-ey">Meet Lauren</p>
+          <h2 class="s-t">Your child deserves someone who <em>gets it.</em></h2>
+        </div>
+        <div class="split-body">
+          <p class="f d1">Hi, I'm Lauren Castro — a Board Certified Behavior Analyst and Licensed Mental Health Counselor with over 10 years of experience helping children, teens, and adults navigate behavioral and emotional challenges.</p>
+          <p class="f d2">I specialize in autism, ADHD, anxiety, depression, OCD, and behavior concerns. I use evidence-based approaches like ABA and CBT to create real, lasting change — not band-aid solutions.</p>
+          <p class="f d3">I provide practical tools, parent support, and personalized care to help clients build skills, gain confidence, and thrive in everyday life.</p>
+        </div>
+        <div class="split-creds f d3">
+          <span class="split-cred">BCBA</span>
+          <span class="split-cred">LMHC</span>
+          <span class="split-cred">10+ Years Experience</span>
+          <span class="split-cred">ABA Therapy</span>
+          <span class="split-cred">CBT</span>
+          <span class="split-cred">In-Home &amp; Online</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="s s-dk">
+  <div class="s-in">
+    <div class="s-hd f">
+      <p class="s-ey">Our Approach</p>
+      <h2 class="s-t">How we create <em>lasting change.</em></h2>
+    </div>
+    <div class="approach-grid f">
+      <div class="approach-card">
+        <div class="approach-icon">Step 01</div>
+        <div class="approach-title">Understand</div>
+        <p class="approach-text">We start with a comprehensive evaluation — learning your child's history, your concerns, and your goals. No assumptions, no one-size-fits-all.</p>
+      </div>
+      <div class="approach-card">
+        <div class="approach-icon">Step 02</div>
+        <div class="approach-title">Build the Plan</div>
+        <p class="approach-text">An individualized treatment plan targeting specific skill deficits. Evidence-based strategies, measurable goals, and a clear path forward.</p>
+      </div>
+      <div class="approach-card">
+        <div class="approach-icon">Step 03</div>
+        <div class="approach-title">Grow Together</div>
+        <p class="approach-text">Ongoing therapy across home, school, and community. Regular progress monitoring. Parent training so the skills generalize beyond our sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s" id="faq">
+  <div class="s-in">
+    <div class="s-hd f">
+      <p class="s-ey">Questions</p>
+      <h2 class="s-t">What parents <em>ask us.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item f"><button class="faq-q">What ages do you work with?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">We provide services for children, teens, and young adults. Our ABA services focus on children with autism and developmental disabilities, while our counseling services extend through young adulthood.</div></div></div>
+      <div class="faq-item f d1"><button class="faq-q">What's the difference between ABA and counseling?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">ABA (Applied Behavior Analysis) focuses on teaching new skills and reducing challenging behaviors through structured, data-driven techniques — primarily for individuals with autism. Counseling addresses emotional and mental health concerns like anxiety, depression, and life transitions using approaches like CBT. Lauren is qualified to provide both.</div></div></div>
+      <div class="faq-item f d1"><button class="faq-q">Where do sessions take place?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">ABA therapy is delivered in-home and at school — wherever your child is. Counseling sessions are available in-person or online through our secure telehealth platform. We meet you where it's most convenient and effective.</div></div></div>
+      <div class="faq-item f d2"><button class="faq-q">Do you accept insurance?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Please contact us directly to discuss insurance coverage and payment options. We're happy to walk you through the process and help you understand your benefits.</div></div></div>
+      <div class="faq-item f d2"><button class="faq-q">How do I get started?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">Send us an email at Scheduling@risingmindstherapy.com with your name, phone number, the age of the client, and a brief description of your concerns. We'll reach out to discuss next steps and schedule an initial consultation.</div></div></div>
+      <div class="faq-item f d3"><button class="faq-q">What can I expect from the first session?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-in">For ABA, we begin with a parent meeting to learn about your child, followed by a comprehensive developmental evaluation. For counseling, the first session focuses on understanding your history, concerns, and goals — then building a personalized treatment plan together.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="s s-alt" id="contact">
+  <div class="s-in">
+    <div class="s-hd f">
+      <p class="s-ey">Get Started</p>
+      <h2 class="s-t">Reach out <em>anytime.</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="cc f"><h3>Email</h3><p><a href="mailto:Scheduling@risingmindstherapy.com">Scheduling@risingmindstherapy.com</a><br><br>Include your name, phone, age of client, and a brief description of your concerns.</p></div>
+      <div class="cc f d1"><h3>Location</h3><p>Boca Raton, FL<br><br>In-home services<br>School-based services<br>Online / telehealth available</p></div>
+      <div class="cc f d2"><h3>Follow</h3><p><a href="https://www.instagram.com/rising_minds_therapy" target="_blank">@rising_minds_therapy</a><br><br>Resources, tips, and updates for parents and families.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <p class="s-ey f">Rising Minds Therapeutic Services</p>
+  <h2 class="f">Your child's progress starts with <em>one conversation.</em></h2>
+  <p class="f">Evidence-based therapy. Personalized to your family. Boca Raton.</p>
+  <div class="f"><a href="mailto:Scheduling@risingmindstherapy.com?subject=New%20Client%20Inquiry" class="btn btn-sage">Schedule a Consultation</a></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div><div class="ft-brand">Rising <span>Minds</span></div><p class="ft-desc">Individualized ABA therapy and mental health counseling for children, teens, and young adults. Boca Raton, FL.</p></div>
+    <div><h4>Services</h4><ul><li><a href="#services">ABA Therapy</a></li><li><a href="#services">Counseling</a></li><li><a href="#services">Social Skills Groups</a></li><li><a href="#services">Parent Training</a></li></ul></div>
+    <div><h4>Connect</h4><ul><li><a href="mailto:Scheduling@risingmindstherapy.com">Email Us</a></li><li><a href="https://www.instagram.com/rising_minds_therapy" target="_blank">Instagram</a></li><li><a href="#faq">FAQ</a></li><li><a href="#pathway">Get Started</a></li></ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2026 Rising Minds Therapeutic Services</span><span class="ft-cr">Sincerely Ellyette</span></div>
+</footer>
+
+<div class="stick"><a href="mailto:Scheduling@risingmindstherapy.com?subject=New%20Client%20Inquiry">Schedule a Consultation</a></div>
+
+<script>
+const n=document.getElementById('nav');
+window.addEventListener('scroll',()=>n.classList.toggle('scrolled',window.scrollY>20));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.f').forEach(el=>io.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.parentElement,o=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(x=>x.classList.remove('open'));if(!o)i.classList.add('open')})});
+
+// PATHWAY — the interactive custom piece
+document.querySelectorAll('.pathway-opt').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    // Deselect all
+    document.querySelectorAll('.pathway-opt').forEach(o=>o.classList.remove('selected'));
+    document.querySelectorAll('.pathway-result').forEach(r=>{r.classList.remove('show');r.style.display='none'});
+    // Select this one
+    opt.classList.add('selected');
+    const concern = opt.dataset.concern;
+    const result = document.getElementById('res-'+concern);
+    if(result){result.style.display='block';setTimeout(()=>result.classList.add('show'),10)}
+    // Scroll to result
+    setTimeout(()=>result.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+  });
+});
+</script>
+</body>
+</html>
